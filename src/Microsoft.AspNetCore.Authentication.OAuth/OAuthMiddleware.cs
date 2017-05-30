@@ -27,13 +27,15 @@ namespace Microsoft.AspNetCore.Authentication.OAuth
         /// <param name="encoder">The <see cref="UrlEncoder"/>.</param>
         /// <param name="sharedOptions">The <see cref="SharedAuthenticationOptions"/> configuration options for this middleware.</param>
         /// <param name="options">Configuration options for the middleware.</param>
+        /// <param name="grantType">The OAuth grant type used by the middleware.</param>
         public OAuthMiddleware(
             RequestDelegate next,
             IDataProtectionProvider dataProtectionProvider,
             ILoggerFactory loggerFactory,
             UrlEncoder encoder,
             IOptions<SharedAuthenticationOptions> sharedOptions,
-            IOptions<TOptions> options)
+            IOptions<TOptions> options,
+            string grantType = "code")
             : base(next, options, loggerFactory, encoder)
         {
             if (next == null)
